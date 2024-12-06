@@ -1,0 +1,14 @@
+<div>
+  <h1>Your bookings</h1>
+  <%if @bookings.length > 0%>
+    <% @bookings.each do |booking| %>
+      <div>
+        <h2><%= booking.restaurant.name %></h2>
+        <%= link_to "Show", booking_path(booking) %>
+        <%= booking.date.strftime("%a %b %e") %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>You have no bookings yet</p>
+  <% end %>
+</div>
