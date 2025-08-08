@@ -389,6 +389,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   rspec-rails (~> 8.0.0)
+  rubocop
   rubocop-discourse
   rubocop-rails-omakase
   sassc-rails

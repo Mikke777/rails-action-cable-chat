@@ -73,6 +73,7 @@ group :development do
   # gem "spring"
 
   # gem "error_highlight", ">= 0.7.0", platforms: [:ruby]
+  gem "rubocop", require: false
   gem "rubocop-rails-omakase", require: false
   gem "rubocop-discourse", require: false
 end
