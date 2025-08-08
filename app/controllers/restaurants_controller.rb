@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[show edit update destroy]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -22,19 +22,24 @@ class RestaurantsController < ApplicationController
   end
 
   # POST /restaurants or /restaurants.json
+  # def create
+  #   @restaurant = Restaurant.new(restaurant_params)
+  #   @restaurant.user = current_user
+  #   respond_to do |format|
+  #     if @restaurant.save
+  #       format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+  #       format.json { render :show, status: :created, location: @restaurant }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
-
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with_restaurant(@restaurant.save)
   end
 
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
@@ -61,13 +66,26 @@ class RestaurantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def restaurant_params
-      params.require(:restaurant).permit(:name)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def restaurant_params
+    params.require(:restaurant).permit(:name)
+  end
+
+  def respond_with_restaurant(success)
+    respond_to do |format|
+      if success
+        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+        format.json { render :show, status: :created, location: @restaurant }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
     end
+  end
 end
