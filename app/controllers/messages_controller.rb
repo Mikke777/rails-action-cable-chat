@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.expect(message: [:content])
   end
 
   def respond_success

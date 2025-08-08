@@ -21,21 +21,6 @@ class RestaurantsController < ApplicationController
   def edit
   end
 
-  # POST /restaurants or /restaurants.json
-  # def create
-  #   @restaurant = Restaurant.new(restaurant_params)
-  #   @restaurant.user = current_user
-  #   respond_to do |format|
-  #     if @restaurant.save
-  #       format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
-  #       format.json { render :show, status: :created, location: @restaurant }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
@@ -46,7 +31,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully updated." }
+        format.html { redirect_to @restaurant, notice: t('restaurants.updated') }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +45,7 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy!
 
     respond_to do |format|
-      format.html { redirect_to restaurants_path, status: :see_other, notice: "Restaurant was successfully destroyed." }
+      format.html { redirect_to restaurants_path, status: :see_other, notice: t('restaurants.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -74,13 +59,13 @@ class RestaurantsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def restaurant_params
-    params.require(:restaurant).permit(:name)
+    params.expect(restaurant: [:name])
   end
 
   def respond_with_restaurant(success)
     respond_to do |format|
       if success
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+        format.html { redirect_to @restaurant, notice: t('restaurants.created') }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }

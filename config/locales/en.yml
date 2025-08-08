@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  restaurants:
+    updated: "Restaurant was successfully updated."
+    created: "Restaurant was successfully created."
+    destroyed: "Restaurant was successfully destroyed."

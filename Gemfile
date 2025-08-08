@@ -72,8 +72,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  # gem "error_highlight", ">= 0.7.0", platforms: [:ruby]
+  gem "rubocop", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "rubocop-discourse", require: false
 end
 
 group :test do

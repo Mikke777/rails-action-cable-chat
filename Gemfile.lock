@@ -126,7 +126,6 @@ GEM
       dotenv (= 3.1.4)
       railties (>= 6.1)
     drb (2.2.1)
-    error_highlight (0.7.0)
     erubi (1.13.0)
     execjs (2.10.0)
     ffi (1.17.0-arm64-darwin)
@@ -235,7 +234,7 @@ GEM
     rake (13.2.1)
     rdoc (6.8.1)
       psych (>= 4.0.0)
-    regexp_parser (2.9.3)
+    regexp_parser (2.11.0)
     reline (0.5.12)
       io-console (~> 0.5)
     responders (3.1.1)
@@ -273,6 +272,21 @@ GEM
     rubocop-ast (1.46.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
+    rubocop-capybara (2.22.1)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+    rubocop-discourse (3.12.1)
+      activesupport (>= 6.1)
+      lint_roller (>= 1.1.0)
+      rubocop (>= 1.73.2)
+      rubocop-capybara (>= 2.22.0)
+      rubocop-factory_bot (>= 2.27.0)
+      rubocop-rails (>= 2.30.3)
+      rubocop-rspec (>= 3.0.1)
+      rubocop-rspec_rails (>= 2.31.0)
+    rubocop-factory_bot (2.27.1)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     rubocop-performance (1.25.0)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
@@ -287,6 +301,13 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    rubocop-rspec (3.6.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+    rubocop-rspec_rails (2.31.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+      rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -361,7 +382,6 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
-  error_highlight (>= 0.4.0)
   font-awesome-sass (~> 6.1)
   importmap-rails
   ostruct
@@ -369,6 +389,8 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   rspec-rails (~> 8.0.0)
+  rubocop
+  rubocop-discourse
   rubocop-rails-omakase
   sassc-rails
   selenium-webdriver
