@@ -74,6 +74,7 @@ group :development do
 
   # gem "error_highlight", ">= 0.7.0", platforms: [:ruby]
   gem "rubocop-rails-omakase", require: false
+  gem "rubocop-discourse", require: false
 end
 
 group :test do
