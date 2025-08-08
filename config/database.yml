@@ -58,7 +58,7 @@ test:
   database: rails_action_cable_chat_test
   username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
   password: <%= ENV['POSTGRES_PASSWORD'] || '' %>
-  host: <%= ENV['POSTGRES_HOST'] || 'localhost' %>
+  host: <%= ENV['POSTGRES_HOST'] || '127.0.0.1' %>
   port: 5432
 
 # As with config/credentials.yml, you never want to store sensitive information,
